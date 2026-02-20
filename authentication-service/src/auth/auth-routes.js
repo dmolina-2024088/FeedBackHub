@@ -19,43 +19,42 @@ const router = Router();
 /**
  * @swagger
  * /api/v1/auth/register:
- *   post:
+post:
  *     tags: [Authentication]
  *     summary: Registra un nuevo usuario
  *     description: Crea una nueva cuenta de usuario con validaciones de seguridad
- *     consumes:
- *       - multipart/form-data
- *     parameters:
- *       - name: name
- *         in: formData
- *         required: true
- *         type: string
- *         description: Nombre del usuario
- *       - name: surname
- *         in: formData
- *         required: true
- *         type: string
- *         description: Apellido del usuario
- *       - name: username
- *         in: formData
- *         required: true
- *         type: string
- *         description: Nombre de usuario único
- *       - name: email
- *         in: formData
- *         required: true
- *         type: string
- *         description: Email del usuario
- *       - name: password
- *         in: formData
- *         required: true
- *         type: string
- *         description: Contraseña (mínimo 8 caracteres)
- *       - name: phone
- *         in: formData
- *         required: true
- *         type: string
- *         description: Teléfono (8 dígitos)
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             type: object
+ *             required:
+ *               - name
+ *               - surname
+ *               - username
+ *               - email
+ *               - password
+ *               - phone
+ *             properties:
+ *               name:
+ *                 type: string
+ *                 description: Nombre del usuario
+ *               surname:
+ *                 type: string
+ *                 description: Apellido del usuario
+ *               username:
+ *                 type: string
+ *                 description: Nombre de usuario único
+ *               email:
+ *                 type: string
+ *                 description: Email del usuario
+ *               password:
+ *                 type: string
+ *                 description: Contraseña (mínimo 8 caracteres)
+ *               phone:
+ *                 type: string
+ *                 description: Teléfono (8 dígitos)
  *     responses:
  *       201:
  *         description: Usuario registrado exitosamente

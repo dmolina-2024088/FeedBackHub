@@ -18,8 +18,6 @@ import {
   errorHandler,
   notFound,
 } from '../middlewares/server-genericError-handler.js';
-import '../src/auth/auth-routes.js'
-import '../src/users/user-routes.js'
 
 const BASE_PATH = '/api/v1';
 

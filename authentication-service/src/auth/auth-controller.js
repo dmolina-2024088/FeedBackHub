@@ -8,10 +8,10 @@ import {
 } from '../../helpers/auth-operations.js';
 import { getUserProfileHelper } from '../../helpers/profile-operations.js';
 import { asyncHandler } from '../../middlewares/server-genericError-handler.js';
-
 export const register = asyncHandler(async (req, res) => {
   try {
-    const result = await registerUserHelper(userData);
+    const { name, surname, username, email, password, phone } = req.body;
+    const result = await registerUserHelper({ name, surname, username, email, password, phone });
 
     res.status(201).json(result);
   } catch (error) {
