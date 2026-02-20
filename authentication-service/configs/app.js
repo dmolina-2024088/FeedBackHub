@@ -2,13 +2,15 @@
 'use strict';
 
 import express from 'express';
+import authRoutes from '../src/auth/auth-routes.js'
+import userRoutes from '../src/users/user-routes.js'
 import cors from 'cors';
 import helmet from 'helmet';
 import morgan from 'morgan';
 import { dbConnection } from './db.js';
 // Ensure models are registered before DB sync
-import '../src/users/user.model.js';
-import '../src/auth/role.model.js';
+import '../src/users/user-model.js';
+import '../src/auth/role-model.js'
 import { requestLimit } from '../middlewares/request-limit.js';
 import { corsOptions } from './cors-configuration.js';
 import { helmetConfiguration } from './helmet-configuration.js';
@@ -16,8 +18,8 @@ import {
   errorHandler,
   notFound,
 } from '../middlewares/server-genericError-handler.js';
-import authRoutes from '../src/auth/auth.routes.js';
-import userRoutes from '../src/users/user.routes.js';
+import '../src/auth/auth-routes.js'
+import '../src/users/user-routes.js'
 
 const BASE_PATH = '/api/v1';
 
@@ -27,7 +29,7 @@ const middlewares = (app) => {
   app.use(cors(corsOptions));
   app.use(helmet(helmetConfiguration));
   app.use(requestLimit);
-  app.use(morgan(process.env.NODE_ENV === 'development' ? 'dev' : 'combined'));
+  app.use(morgan('dev'));
 };
 
 const routes = (app) => {

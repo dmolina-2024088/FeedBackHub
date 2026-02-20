@@ -1,11 +1,6 @@
 
-import {
-  User,
-  UserProfile,
-  UserEmail,
-  UserPasswordReset,
-} from '../src/users/user.model.js';
-import { UserRole, Role } from '../src/auth/role.model.js';
+import '../src/users/user-model.js'
+import '../src/auth/role-model.js'
 import { USER_ROLE } from './role-constants.js';
 import { hashPassword } from '../utils/password-utils.js';
 import { Op } from 'sequelize';

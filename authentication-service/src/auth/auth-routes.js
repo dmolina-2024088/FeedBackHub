@@ -1,5 +1,5 @@
 import { Router } from 'express';
-import * as authController from './auth.controller.js';
+import * as authController from '../auth/auth-controller.js';
 import { validateJWT } from '../../middlewares/validate-JWT.js';
 import {
   authRateLimit,
@@ -13,7 +13,7 @@ import {
   validateForgotPassword,
   validateResetPassword,
 } from '../../middlewares/validation.js';
-
+ 
 const router = Router();
 
 /**
@@ -67,8 +67,6 @@ const router = Router();
 router.post(
   '/register',
   authRateLimit,
-  upload.single('profilePicture'),
-  handleUploadError,
   validateRegister,
   authController.register
 );
